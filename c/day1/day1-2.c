@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int calculateFuel(int num, int *original);
+int calculateFuel(int num, int total);
 
 int main()
 {
@@ -13,7 +13,7 @@ int main()
 	char line[20]; //20 is an arbitrary limit, the lines have a max of 6 characters
 	while(fgets(line, 20, fptr))
 	{
-		total += calculateFuel(strtol(line, NULL, 10), &total);
+		total = calculateFuel(strtol(line, NULL, 10), total);
 	}
 
 	printf("%d\n", total);
@@ -21,11 +21,11 @@ int main()
 	return 0;
 }
 
-int calculateFuel(int num, int *original)
+int calculateFuel(int num, int total)
 {
 	int fuel = num / 3 - 2;
-	if(fuel <= 0) return 0;
+	if(fuel <= 0) return total;
 
-	*original += fuel;
-	return calculateFuel(fuel, original);
+	total += fuel;
+	return calculateFuel(fuel, total);
 }

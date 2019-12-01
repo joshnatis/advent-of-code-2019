@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int calculateFuel(int num, int *original);
+int calculateFuel(int num, int total);
 
 int main()
 {
@@ -15,7 +15,7 @@ int main()
 	string num;
 	while(getline(fin, num))
 	{
-		total += calculateFuel(stoi(num), &total);
+		total = calculateFuel(stoi(num), total);
 	}
 
 	cout << total << endl;
@@ -24,11 +24,11 @@ int main()
 	return 0;
 }
 
-int calculateFuel(int num, int *original)
+int calculateFuel(int num, int total)
 {
 	int fuel = num / 3 - 2;
-	if(fuel <= 0) return 0;
+	if(fuel <= 0) return total;
 
-	*original += fuel;
-	return calculateFuel(fuel, original);
+	total += fuel;
+	return calculateFuel(fuel, total);
 }
