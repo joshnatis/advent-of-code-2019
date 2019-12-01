@@ -19,6 +19,7 @@ int main()
 	}
 
 	cout << total << endl;
+	fin.close();
 
 	return 0;
 }

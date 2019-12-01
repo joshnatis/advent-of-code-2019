@@ -3,8 +3,6 @@
 
 using namespace std;
 
-int calculateFuel(int num, int *original);
-
 int main()
 {
 	ifstream fin;
@@ -19,6 +17,7 @@ int main()
 	}
 
 	cout << total << endl;
+	fin.close();
 
 	return 0;
 }
